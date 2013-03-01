@@ -5,7 +5,7 @@ import java.util.Random;
 
 /**
  * 
- * @author jfiddle, choward
+ * @author jfiddle, CP3
  *
  */
 public class MemGame {

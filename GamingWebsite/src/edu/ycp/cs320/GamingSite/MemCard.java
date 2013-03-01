@@ -1,7 +1,7 @@
 package edu.ycp.cs320.GamingSite;
 /**
  * 
- * @author jfiddle
+ * @author jfiddle, CP3
  *
  * This class contains the data for creating the cards. Each card contains an image.
  * 
