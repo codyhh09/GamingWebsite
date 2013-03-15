@@ -1,38 +1,45 @@
 package edu.ycp.cs320.gamingwebsite.client;
 
+import java.util.ArrayList;
+
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.InlineLabel;
+import com.google.gwt.canvas.dom.client.Context2d;
+import com.google.gwt.dom.client.ImageElement;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.Button;
 
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-
+import edu.ycp.cs320.memory.*;
+import edu.ycp.cs320.location.Memloc;
 
 public class MemView extends Composite {
-	public MemView() {
-		
-		LayoutPanel layoutPanel = new LayoutPanel();
-		initWidget(layoutPanel);
 	
-
-		InlineLabel lblDisplayScore = new InlineLabel("Score:");
-		layoutPanel.add(lblDisplayScore);
-		layoutPanel.setWidgetLeftWidth(lblDisplayScore, 316.0, Unit.PX, 38.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(lblDisplayScore, 0.0, Unit.PX, 26.0, Unit.PX);
+	private String card;
+	private boolean fliped;
+	private MemDeck deck;
+	private ArrayList<ImageElement> image;
+	
+	
+	public MemView(Image img) {
+		image = new ArrayList<ImageElement>();
 		
-		Label lblScore = new Label("0");
-		lblScore.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
-		layoutPanel.add(lblScore);
-		layoutPanel.setWidgetLeftWidth(lblScore, 360.0, Unit.PX, 90.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(lblScore, 0.0, Unit.PX, 26.0, Unit.PX);
+		fliped = false;
+		deck = new MemDeck();
 		
-		Button btnReplay = new Button("New button");
-		btnReplay.setText("Replay");
-		layoutPanel.add(btnReplay);
-		layoutPanel.setWidgetLeftWidth(btnReplay, 0.0, Unit.PX, 90.0, Unit.PX);
-		layoutPanel.setWidgetTopHeight(btnReplay, 260.0, Unit.PX, 40.0, Unit.PX);
-
+		for(int i = 0; i< deck.getNumCards(); i++){
+			image = (ImageElement) new Image
+		}
 	}
+	
+	public String getCard() {
+		return card;
+	}
+	
+	
+	
+	
 }
