@@ -22,8 +22,7 @@ public class MemDeck {
 	public void make(){		
 		Image[] allImages = Image.values();		
 		for(int i = 0; i <= allImages.length;i++){		
-			memDeck.add(new MemCard(allImages[i]));		
-			shuffle();		
+			memDeck.add(new MemCard(allImages[i]));			
 		}	
 	}	
 	/***	
@@ -37,10 +36,6 @@ public class MemDeck {
 * shuffles the deck so the	
 * game is not too easy	
 */	
-	public void shuffle() {
-		//shuffles the deck     
-		Collections.shuffle(memDeck);	
-	}	
 	/**	
 	 *  * 	
 	 *   * @param i	 

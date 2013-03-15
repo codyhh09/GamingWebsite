@@ -2,17 +2,28 @@
 canvas {
 	position:absolute;
 	z-index:-1;
-	border-color:#000000;
-	border-width:1px;
-	border-style: solid;
+	margin-top: auto;
+	border: 1px solid #000000;
+	background-color: yellow;
+	cursor: crosshair;
+	table-layout: auto;
+	page-break-before: auto;
+	page-break-after: auto;
 }
 
 /** Example rules used by the template application (remove for your app) */
 h1 {
-  font-size: 2em;
-  font-weight: bold;
-  color: #777777;
-  margin: 40px 0px 70px;
-  text-align: center;
+	color: #77FF77;
+	margin: auto;
+	border: thin;
+	font-stretch: expanded;
+	font-variant: normal;
+	font-size: 2em;
+	font-style: normal;
+	font-family: serif;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: overline;
+	background-color: mediumblue;
 }
 
