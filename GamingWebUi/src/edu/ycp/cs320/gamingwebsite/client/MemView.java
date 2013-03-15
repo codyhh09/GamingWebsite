@@ -19,24 +19,45 @@ import edu.ycp.cs320.location.Memloc;
 public class MemView extends Composite {
 	
 	private String card;
+	private Memloc loc;
 	private boolean fliped;
 	private MemDeck deck;
 	private ArrayList<ImageElement> image;
+	public static int height = 480;
+	public static int width = 640;
 	
 	
-	public MemView(Image img) {
+	public MemView() {
 		image = new ArrayList<ImageElement>();
 		
 		fliped = false;
 		deck = new MemDeck();
 		
-		for(int i = 0; i< deck.getNumCards(); i++){
-			image = (ImageElement) new Image
+		loc = new Memloc();
+		
+		deck.make();
+		
+		// drawing the picture
+		for(int i= 0; i< deck.getNumCards(); i++){
+			image.add(Draw(i));
 		}
+
 	}
 	
-	public String getCard() {
-		return card;
+	public ImageElement Draw(int i){
+		ImageElement img = (ImageElement) new Image(deck.getCard(i).getImg().update()).getElement().cast();
+		
+		return img;
+	}
+	
+	public void render(Context2d context){
+		for(double x = 0; x < width; x+=30){
+			for(double y = 0; y< height; y+=50){
+				int i = 0;
+				context.drawImage(Draw(i), x, y);
+				i++;
+			}
+		}	
 	}
 	
 	

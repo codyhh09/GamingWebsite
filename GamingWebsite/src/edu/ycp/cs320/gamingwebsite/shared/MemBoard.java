@@ -12,6 +12,9 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import edu.ycp.cs320.memory.Image;
+import edu.ycp.cs320.memory.MemGame;
+
 
 /**
  * 

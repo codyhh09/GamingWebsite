@@ -15,35 +15,29 @@ public enum Image {
 	    Star, Circle, Square, Triangle, Arrow, Speech, Hexagon, Light, Heart, fourPStar;
 		
 	    private String card;
-	    private boolean fliped = false;
-	    public String update(Image img) {
-			if(fliped){
-				if(img.equals(Image.Arrow)){
+	    public String update() {
+				if(this == Arrow){
 					card = "CardImage/arrow.jpg";
-				}else if(img.equals(Image.Circle)){
+				}else if(this == Circle){
 					card = "CardImage/circle.jpg";
-				}else if(img.equals(Image.fourPStar)){
+				}else if(this == fourPStar){
 					card = "CardImage/fourpstar.jpg";
-				}else if(img.equals(Image.Heart)){
+				}else if(this == Heart){
 					card = "CardImage/heart.jpg";
-				}else if(img.equals(Image.Hexagon)){
+				}else if(this == Hexagon){
 					card = "CardImage/hexagon.jpg";
-				}else if(img.equals(Image.Light)){
+				}else if(this == Light){
 					card = "CardImage/light.jpg";
-				}else if(img.equals(Image.Speech)){
+				}else if(this == Speech){
 					card = "CardImage/speech.jpg";
-				}else if(img.equals(Image.Square)){
+				}else if(this == Square){
 					card = "CardImage/square1.jpg";
-				}else if(img.equals(Image.Triangle)){
+				}else if(this == Triangle){
 					card = "CardImage/triangle.jpg";
-				}else if(img.equals(Image.Star)){
+				}else if(this == Star){
 					card = "CardImage/star1.jpg";
 				}
-			}
-			else{
-				card = "CardImage/Backcard.jpg";
-			}
-			
+
 			return card;
 	    }
 	    	

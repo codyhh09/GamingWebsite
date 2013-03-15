@@ -18,17 +18,19 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Image;
 
+import edu.ycp.cs320.location.Memloc;
+
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class GamingWebUi implements EntryPoint, MouseDownHandler, MouseUpHandler {
-	
+	// context
 	private Context2d context;
-	
+	// timer
 	private Timer timer;
-	
-	private MemDeckView view;
-
+	private Memloc loc;
+	private MemView view;
+	// mouse press
 	private boolean mouseDown;
 	
 	private final static int width = 600;
@@ -40,26 +42,27 @@ public class GamingWebUi implements EntryPoint, MouseDownHandler, MouseUpHandler
 	public void onModuleLoad() {
 		
 		final Canvas canvas = Canvas.createIfSupported();
-		view = new MemDeckView();
+		view = new MemView();
 		
-		RootPanel rootPanel = RootPanel.get();
-		rootPanel.add(canvas, 0, 0);
+		// adding the canvas to the HTML file
+		RootPanel.get().add(canvas, 0, 0);
 		
+		// setting the size of the canvas
 		canvas.setSize("448px", "298px");
 		canvas.setCoordinateSpaceHeight(height);
 		canvas.setCoordinateSpaceWidth(width);
 		
-//		for(int x = 0; x < width; x+=30){
-//			for(int y = 0; y< height; y+=50){
-				Image image = new Image(view.getDeck().getCard(0).);
-				rootPanel.add(image, 50, 0);
-				image.setSize("100px", "100px");
-		
+		// add init press on mouse button
 		canvas.addMouseDownHandler(this);
 		canvas.addMouseUpHandler(this);
 		
+		//init the context
 		context = canvas.getContext2d();
+		//init the loc
+		loc = new Memloc();
 		
+		
+		// Init the timer
 		timer = new Timer() {
 			@Override
 			public void run(){
@@ -69,7 +72,7 @@ public class GamingWebUi implements EntryPoint, MouseDownHandler, MouseUpHandler
 	}
 	
 	public void update(){
-		
+		view.render(context);
 	}
 	
 	public void onMouseMove(MouseMoveEvent event) {
