@@ -8,6 +8,7 @@ import com.google.gwt.event.dom.client.MouseDownHandler;
 import com.google.gwt.event.dom.client.MouseUpHandler;
 import com.google.gwt.user.client.Timer;
 //import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.RootPanel;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -20,7 +21,7 @@ public class GamingWebUi {
 //
 //	// timer
 //	private Timer timer;
-//	private MemView view;
+	private MemView view;
 //	// mouse press
 //	private boolean mouseDown;
 	
@@ -33,10 +34,10 @@ public class GamingWebUi {
 	public void onModuleLoad() {
 		
 		final Canvas canvas = Canvas.createIfSupported();
-//		view = new MemView();
+		view = new MemView();
 		
 //		// adding the canvas to the HTML file
-//		RootPanel.get().add(canvas, 0, 0);
+		RootPanel.get().add(view.getCanvas(), 0, 0);
 		
 		// setting the size of the canvas
 		canvas.setSize("448px", "298px");

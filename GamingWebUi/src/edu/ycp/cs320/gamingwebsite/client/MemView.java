@@ -42,17 +42,22 @@ public class MemView extends Composite {
 		
 		
 		initWidget(canvas);
+		canvas.setSize("694px", "412px");
 		
 		image = new ArrayList<ImageElement>();
 		deck = new MemDeck();
 		deck.make();
 		
+		context = canvas.getContext2d();
 		// drawing the picture
 		for(int i= 0; i< deck.getNumCards(); i++){
 			image.add(Draw(i));
 		}
 		//context.drawImage(image.get(1), 0, 0);
-		canvas.getContext(deck.getCard(1).getImg().update());
+		//canvas.getContext(deck.getCard(1).getImg().update());
+		context.drawImage(image.get(0), 0, 0);
+		context.fillRect(25, 25, 50, 50);
+		canvas.setVisible(true);
 	}
 	
 	public ImageElement Draw(int i){
