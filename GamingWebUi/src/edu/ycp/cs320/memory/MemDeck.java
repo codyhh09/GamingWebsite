@@ -24,18 +24,15 @@ public class MemDeck {
 		for(int i = 0; i <= allImages.length;i++){		
 			memDeck.add(new MemCard(allImages[i]));		
 			shuffle();		
-			}	
 		}	
+	}	
 	/***	
-	 *  * 
-	 *  	
-	 *   
 	 *   * @returns the size of the deck	
 	 *   
 	 */	
 	public int getNumCards() {	
 		return memDeck.size();	
-		}	
+	}	
 /***	 
 * shuffles the deck so the	
 * game is not too easy	
@@ -43,7 +40,7 @@ public class MemDeck {
 	public void shuffle() {
 		//shuffles the deck     
 		Collections.shuffle(memDeck);	
-		}	
+	}	
 	/**	
 	 *  * 	
 	 *   * @param i	 
@@ -51,7 +48,7 @@ public class MemDeck {
 	 *    */	
 	public MemCard getCard(int i){	
 		return memDeck.get(i);
-		}	
+	}	
 	/**	 
 	 * * 	
 	 *  * @param index	 

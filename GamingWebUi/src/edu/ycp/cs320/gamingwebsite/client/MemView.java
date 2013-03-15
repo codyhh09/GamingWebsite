@@ -4,23 +4,14 @@ import java.util.ArrayList;
 
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.LayoutPanel;
-import com.google.gwt.user.client.ui.InlineLabel;
 import com.google.gwt.canvas.dom.client.Context2d;
 import com.google.gwt.dom.client.ImageElement;
-import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.user.client.ui.Button;
-
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import edu.ycp.cs320.memory.*;
 import edu.ycp.cs320.location.Memloc;
 
 public class MemView extends Composite {
 	
-	private String card;
 	private Memloc loc;
-	private boolean fliped;
 	private MemDeck deck;
 	private ArrayList<ImageElement> image;
 	public static int height = 480;
@@ -29,12 +20,7 @@ public class MemView extends Composite {
 	
 	public MemView() {
 		image = new ArrayList<ImageElement>();
-		
-		fliped = false;
 		deck = new MemDeck();
-		
-		loc = new Memloc();
-		
 		deck.make();
 		
 		// drawing the picture
@@ -45,8 +31,7 @@ public class MemView extends Composite {
 	}
 	
 	public ImageElement Draw(int i){
-		ImageElement img = (ImageElement) new Image(deck.getCard(i).getImg().update()).getElement().cast();
-		
+		ImageElement img = (ImageElement) new Image(deck.getCard(i).getImg().update()).getElement().cast();	
 		return img;
 	}
 	
@@ -54,7 +39,7 @@ public class MemView extends Composite {
 		for(double x = 0; x < width; x+=30){
 			for(double y = 0; y< height; y+=50){
 				int i = 0;
-				context.drawImage(Draw(i), x, y);
+				context.drawImage(Draw(i), loc.getX(), loc.getY());
 				i++;
 			}
 		}	

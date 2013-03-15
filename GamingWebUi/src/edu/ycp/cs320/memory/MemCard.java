@@ -4,7 +4,7 @@ package edu.ycp.cs320.memory;
 
 /**
  * 
- * @author jfiddle
+ * @author jfiddle, cp3
  *
  * This class contains the data for creating the cards. Each card contains an image.
  * 
@@ -35,7 +35,6 @@ public class MemCard {
             return true;
         else
             return false;
-
 	}
 
 }
