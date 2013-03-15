@@ -1,8 +1,10 @@
 
-package edu.ycp.cs320.gamingwebsite.shared;
+package edu.ycp.cs320.memory;
+
+
 /**
  * 
- * @author jfiddle
+ * @author jfiddle, cp3
  *
  * This class contains the data for creating the cards. Each card contains an image.
  * 
@@ -10,24 +12,15 @@ package edu.ycp.cs320.gamingwebsite.shared;
 public class MemCard {
 	
 	private Image img;
-	private double x;
-	private double y;
 	
-	public MemCard(Image i, double x, double y)
+	public MemCard(Image img)
 	{
-		img = i;
-		this.x = x;
-		this.y = x;
+		this.img = img;
 	}
 	
-	public double getX() {
-		return x;
+	public Image getImg() {
+		return img;
 	}
-	
-	public double getY() {
-		return y;
-	}
-	
 	/**
 	 * Checks to see if two cards are equal to each other by comparing the cards' images.
 	 * 
@@ -42,7 +35,6 @@ public class MemCard {
             return true;
         else
             return false;
-
 	}
 
 }
