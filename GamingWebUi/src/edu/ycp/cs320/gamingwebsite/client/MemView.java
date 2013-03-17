@@ -4,15 +4,22 @@ import java.util.ArrayList;
 
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.LayoutPanel;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.canvas.dom.client.Context2d;
+import com.google.gwt.canvas.dom.client.ImageData;
+import com.google.gwt.dom.client.CanvasElement;
 import com.google.gwt.dom.client.ImageElement;
 import edu.ycp.cs320.memory.*;
 import edu.ycp.cs320.location.Memloc;
 import com.google.gwt.canvas.client.Canvas;
+import com.google.gwt.event.dom.client.LoadEvent;
+import com.google.gwt.event.dom.client.LoadHandler;
 import com.google.gwt.event.dom.client.MouseDownHandler;
 import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.dom.client.MouseUpHandler;
 import com.google.gwt.event.dom.client.MouseUpEvent;
+import com.google.gwt.dom.client.Style.Unit;
 
 public class MemView extends Composite {
 	
@@ -25,60 +32,50 @@ public class MemView extends Composite {
 	private Canvas canvas;
 	private Context2d context;
 	
-	
 	public MemView() {
 		
+		LayoutPanel layoutPanel = new LayoutPanel();
+		initWidget(layoutPanel);
+		layoutPanel.setSize("697px", "542px");
 		canvas = Canvas.createIfSupported();
-		canvas.addMouseUpHandler(new MouseUpHandler() {
-			public void onMouseUp(MouseUpEvent event) {
-				down = false;
-			}
-		});
-		canvas.addMouseDownHandler(new MouseDownHandler() {
-			public void onMouseDown(MouseDownEvent event) {
-				down = true;
-			}
-		});
-		
-		
-		initWidget(canvas);
-		canvas.setSize("694px", "412px");
-		
-		image = new ArrayList<ImageElement>();
-		deck = new MemDeck();
-		deck.make();
-		
 		context = canvas.getContext2d();
-		// drawing the picture
-		for(int i= 0; i< deck.getNumCards(); i++){
-			image.add(Draw(i));
-		}
-		//context.drawImage(image.get(1), 0, 0);
-		//canvas.getContext(deck.getCard(1).getImg().update());
-		context.drawImage(image.get(0), 0, 0);
-		context.fillRect(25, 25, 50, 50);
-		canvas.setVisible(true);
+
+		makeCanvas(canvas, context);
+		update();
+		
+		
+		layoutPanel.add(canvas);
+		layoutPanel.setWidgetLeftWidth(canvas, 0.0, Unit.PX, 642.0, Unit.PX);
+		layoutPanel.setWidgetTopHeight(canvas, 0.0, Unit.PX, 526.0, Unit.PX);
 	}
 	
-	public ImageElement Draw(int i){
-		ImageElement img = (ImageElement) new Image(deck.getCard(i).getImg().update()).getElement().cast();	
-		return img;
+	public void makeCanvas(Canvas canvas, Context2d context){
+		canvas.setHeight("480px");
+		canvas.setWidth("640px");
+		canvas.setCoordinateSpaceHeight(1000);
+		canvas.setCoordinateSpaceWidth(1000);
+		
+		Image img = new Image("CardImage/arrow.jpg");
+		
+		context.putImageData(imagedata, x, y);
 	}
 	
-	public void render(Context2d context){
-		for(double x = 0; x < width; x+=30){
-			for(double y = 0; y< height; y+=50){
-				int i = 0;
-				context.drawImage(Draw(i), loc.getX(), loc.getY());
-				i++;
-			}
-		}	
-	}
-	
-	
-	
-	
-	public Canvas getCanvas() {
-		return canvas;
+	public void update(){
+		
 	}
 }
+//		image = new ArrayList<ImageElement>();
+//		deck = new MemDeck();
+//		deck.make();
+		
+
+		// drawing the picture
+//		for(int i= 0; i< deck.getNumCards(); i++){
+//			image.add(Draw(i));
+//		}
+		//context.drawImage(image.get(1), 0, 0);
+		//canvas.getContext(deck.getCard(1).getImg().update());
+//		context.drawImage(image.get(0), 0, 0);
+//		context.fillRect(25, 25, 50, 50);
+//		canvas.setVisible(true);
+//http://code.google.com/p/gwt-examples/wiki/gwt_hmtl5

@@ -2,77 +2,51 @@ package edu.ycp.cs320.gamingwebsite.client;
 
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.canvas.dom.client.Context2d;
+import com.google.gwt.canvas.dom.client.CssColor;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.event.dom.client.MouseDownHandler;
-//import com.google.gwt.event.dom.client.MouseMoveEvent;
-import com.google.gwt.event.dom.client.MouseUpHandler;
-import com.google.gwt.user.client.Timer;
-//import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 
-/**
- * Entry point classes define <code>onModuleLoad()</code>.
- */
-public class GamingWebUi {
-	// context
-//	private Context2d context;
-	// mouse position
-//	private int mouseX, mouseY;
-//
-//	// timer
-//	private Timer timer;
-	private MemView view;
-//	// mouse press
-//	private boolean mouseDown;
-	
-	private final static int width = 600;
-	private final static int height = 400;
-	
-	/**
-	 * This is the entry point method.
-	 */
-	public void onModuleLoad() {
-		
-		final Canvas canvas = Canvas.createIfSupported();
-		view = new MemView();
-		
-//		// adding the canvas to the HTML file
-		RootPanel.get().add(view.getCanvas(), 0, 0);
-		
-		// setting the size of the canvas
-		canvas.setSize("448px", "298px");
-		canvas.setCoordinateSpaceHeight(height);
-		canvas.setCoordinateSpaceWidth(width);
-		
-		// add init press on mouse button
-//		canvas.addMouseDownHandler(this);
-//		canvas.addMouseUpHandler(this);
-		
-		//init the context
-//		context = canvas.getContext2d();
-		
-		// Init the timer
-//		timer = new Timer() {
-//			@Override
-//			public void run(){
-//				update();
-//			}
-//		};
-	}
-	
-//	public void update(){
-//		view.render(context);
-//	}
-//	
-//	@Override
-//	public void onMouseUp(MouseUpEvent event) {
-//		mouseDown = false;
-//		
-//	}
-//
-//	@Override
-//	public void onMouseDown(MouseDownEvent event) {
-//		mouseDown = true;
-//		
-//	}
+
+
+
+
+public class GamingWebUi implements EntryPoint{
+ static final String canvasHolderId = "canvasholder";
+ static final String unsupportedBrowser = "Your browser does not support the HTML5 Canvas";
+ static final int height = 400;
+ static final int width = 500;
+ final CssColor colorRed = CssColor.make("red");
+ final CssColor colorGreen = CssColor.make("green");
+ final CssColor colorBlue = CssColor.make("blue");
+ Canvas canvas;
+ Context2d context;
+
+ public void onModuleLoad() {
+  canvas = Canvas.createIfSupported();
+  if (canvas == null) {
+	  	RootPanel.get(canvasHolderId).add(new Label(unsupportedBrowser));
+        return;
+  }
+  createCanvas();
+ }
+
+ private void createCanvas(){
+     canvas.setWidth(width + "px");
+     canvas.setHeight(height + "px");
+     canvas.setCoordinateSpaceWidth(width);
+	 canvas.setCoordinateSpaceHeight(height);
+     RootPanel.get(canvasHolderId).add(canvas);
+     context = canvas.getContext2d();
+     context.beginPath();
+     context.setFillStyle(colorRed);
+     context.fillRect(100, 50, 100, 100);
+     context.setFillStyle(colorGreen);
+     context.fillRect(200, 150, 100, 100);
+     context.setFillStyle(colorBlue);
+     context.fillRect(300, 250, 100, 100);
+     context.closePath();
+ }
+
 }
+
